@@ -4,7 +4,7 @@
 
     - The working directory must be the command directory.
         : see `^^working directory$` @ `^^shell commands$`
-          @ http://reluk.ca/project/Java/action_plan.brec
+          @ http://reluk.ca/project/Java/notepad.brec
     - The `project` argument gives the proper path of the project to build.
         / The proper path is the relative file path that identifies the project universally.
           E.g. for the present project, use `building/Makeshift` or `building/Makeshift/`.
