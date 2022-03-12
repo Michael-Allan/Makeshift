@@ -71,7 +71,7 @@ public class Bootstrap {
       *     @param sourceNames The proper path of each source file to compile.
       *     @param additionalArguments Additional arguments for `javac`.  These will be inserted
       *       before the given source names.
-      *     @see <a href='https://docs.oracle.com/en/java/javase/15/docs/specs/man/javac.html#synopsis'>
+      *     @see <a href='https://docs.oracle.com/en/java/javase/17/docs/specs/man/javac.html#synopsis'>
       *       Synopsis of `javac`</a>
       */
     public static void compile( final String projectPackage, final List<String> sourceNames,

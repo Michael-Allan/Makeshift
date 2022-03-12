@@ -1,17 +1,15 @@
 # Arguments for the `java` launch of shell commands  | -*- coding: us-ascii; mode: conf-javaprop; -*-
 #
 # This is a `java` command-line argument file; a referent of the files under `./bin/`.  For syntax:
-# `https://docs.oracle.com/en/java/javase/15/docs/specs/man/java.html#java-command-line-argument-files`.
+# `https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html#java-command-line-argument-files`.
 
  # --class-path /tmp/building.Makeshift/ # (given instead in `./java_javac_arguments`)
     -enableassertions
  # --enable-preview # (given instead in `./java_javac_arguments`)
-      # Any actual use of a preview feature results in a warning visible to the user
-      # which (in most cases) cannot be suppressed.  https://openjdk.java.net/jeps/12
- # --source 15 # (given instead in `./java_javac_arguments`)
-      # To demand source launch of a file that lacks a `.java` extension.
-      # https://docs.oracle.com/en/java/javase/15/docs/specs/man/java.html#using-source-file-mode-to-launch-single-file-source-code-programs
+ # --source 17 # (given instead in `./java_javac_arguments`)
+      # To enable source launch of a file that lacks a `.java` extension.
+      # https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html#using-source-file-mode-to-launch-single-file-source-code-programs
     -XX:+ShowCodeDetailsInExceptionMessages # https://openjdk.java.net/jeps/358
 
 
-                                                           # Copyright 2020  Michael Allan.  Licence MIT.
+                                                     # Copyright 2020, 2022  Michael Allan.  Licence MIT.

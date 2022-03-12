@@ -8,18 +8,18 @@ Installation instructions for Makeshift
             + Ensure the path to its installation directory is exported as
               environment variable `JDK_HOME`.
                 >+ echo $JDK_HOME
-                    / ⇒  /opt/jdk-15
+                    / ⇒  /opt/jdk-17
                 if( necessary )
                     + Add the equivalent of following to your login initializer,
                       e.g. `~/.profile`, `~/.bash_profile` or what have you.
 
-                          JDK_HOME=/var/unbak/opt/jdk-15
+                          JDK_HOME=/var/unbak/opt/jdk-17
                           export JDK_HOME
 
             + Confirm the JDK commands are accessible.
                 >+ $JDK_HOME/bin/javac --version
-                        / ⇒  javac 15
-                    - Expect a version of 15, or later.
+                        / ⇒  javac 17
+                    - Expect a version of 17, or later.
         3+ Install the files of the present project.
             >+ cd <command-directory>/
                 / The command directory is where project installations are accessible by their

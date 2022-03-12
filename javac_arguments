@@ -1,7 +1,7 @@
 # Arguments for the `javac` compiler  | -*- mode: conf-javaprop; -*-
 #
 # This file is a referent of `javac` commands issued at runtime by software builders.  For syntax:
-# `https://docs.oracle.com/en/java/javase/15/docs/specs/man/javac.html#command-line-argument-files`.
+# `https://docs.oracle.com/en/java/javase/17/docs/specs/man/javac.html#command-line-argument-files`.
 
     -d /tmp/building.Makeshift/ # The output directory for class files.
       # Cf. `--class-path` in `./java_javac_arguments`.
@@ -10,7 +10,7 @@
       # implicit compilation of ‘additional source files’, ensuring that source files given by Makeshift
       # alone are compiled.  One problem it avoids: `javac` by default implicitly compiles a source file
       # when its class file is missing, but not when the class file predates the source file.
-      # https://docs.oracle.com/en/java/javase/15/docs/specs/man/javac.html#additional-source-files
+      # https://docs.oracle.com/en/java/javase/17/docs/specs/man/javac.html#additional-source-files
    -Xlint:all,-serial
 
 
