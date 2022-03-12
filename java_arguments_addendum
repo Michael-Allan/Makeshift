@@ -1,8 +1,0 @@
-# Additional arguments for the `java` launch of the `build` command  | -*- coding: us-ascii -*-
-
-    -enableassertions
-      # Widely enough to cover any project whose building code might execute during the build.
-
-# Local Variables:
-# mode: conf-javaprop
-# End:

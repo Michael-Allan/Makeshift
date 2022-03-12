@@ -1,4 +1,4 @@
-#!/usr/bin/env --split-string=${JDK_HOME}/bin/java @building/Makeshift/java_arguments @building/Makeshift/java_arguments_addendum @building/Makeshift/java_javac_arguments \c [SS]
+#!/usr/bin/env --split-string=${JDK_HOME}/bin/java @building/Makeshift/java_arguments @building/Makeshift/java_javac_arguments \c [SS]
 package building.Makeshift; // [AFN]
 
 // Changes to this file immediately affect the next build.  Treat it as a build script.
