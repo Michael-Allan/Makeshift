@@ -11,7 +11,7 @@ public enum Target {
     /** A software builder compiled from source code into Java class files.
       * All other targets depend on this target and include it implicitly.
       */
-    builder; }
+    builder }
 
 
                                                         // Copyright © 2020  Michael Allan.  Licence MIT.
