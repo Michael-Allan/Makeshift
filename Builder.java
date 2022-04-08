@@ -55,8 +55,8 @@ public interface Builder {
 
 
     /** Finds the target name that uniquely matches `targ`.  The following search conditions apply.
-      * <ul>
-      *     <li>Letter case is insignificant.</li>
+      *
+      * <ul><li>Letter case is insignificant.</li>
       *     <li>Any dash character ‘-’ of `targ` is treated as an underscore ‘_’.</li>
       *     <li>Abbreviation is allowed: `targ` may be any substring of the target name
       *         that appears in no other target name.</li></ul>
