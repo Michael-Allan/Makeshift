@@ -21,7 +21,7 @@ Installation instructions for Makeshift
                         / ⇒  javac 17
                     - Expect a version of 17, or later.
         3+ Install the files of the present project.
-            >+ cd <command-directory>/
+            >+ cd <command directory>/
                 / The command directory is where project installations are accessible by their
                   proper paths.  The present project, for example, will shortly be accessible
                   at `building/Makeshift`.
@@ -32,15 +32,15 @@ Installation instructions for Makeshift
                 / ⇒  Usage: build <project> <target>...
         5+ Get convenient access to all Makeshift commands.
             + Append the directory of this project’s shell commands to the search path.
-                >+ PATH=$PATH:<command-directory>/building/Makeshift/bin
+                >+ PATH=$PATH:<command directory>/building/Makeshift/bin
             + Test it.
                 >+ which build
-                    / ⇒  <command-directory>/building/Makeshift/bin/build
+                    / ⇒  <command directory>/building/Makeshift/bin/build
                 >+ build -?
                     / ⇒  Usage: build <project> <target>...
             + Make it permanent by adding the same to your login initializer:
 
-                  PATH=$PATH:<command-directory>/building/Makeshift/bin
+                  PATH=$PATH:<command directory>/building/Makeshift/bin
 
         working example
             : see http://reluk.ca/.profile
