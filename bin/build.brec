@@ -1,22 +1,28 @@
 `build` - Compile the software of a project and prepare it for use
 
-        build <project> <target>…
+        build <project path> <target name>…
 
     - The working directory must be the command directory.
         : see `^^working directory$` @ `^^shell commands$` @
           http://reluk.ca/project/Java/notepad.brec
-    - The `project` argument gives the proper path of the project to build.
-        / The proper path is the relative file path that identifies the project universally.
-          E.g. for the present project, use `building/Makeshift` or `building/Makeshift/`.
-            : see `^^proper path$` @ http://reluk.ca/project/lexicon.brec
-    - Each `target` specifies a build target proper to the project.
-        / All build targets should be declared in a source file of the project,
-          conventionally named either `BuildTarget.java` or `builder/Target.java`.
-            : see ../template/BuildTarget.java
-        - Letter case is insignificant here.
-        - Characters ‘-’ and ‘_’ are taken as equivalent.
-        - Abbreviation is allowed: the given `target` may be any substring of the target name
-          that appears in no other target name.
+    - Two or more positional arguments are required:
+
+        <project path>
+            / The proper path of the project: the relative file path that identifies it universally.
+               E.g. for the present project, use `building/Makeshift` or `building/Makeshift/`.
+                : see `^^proper path$` @ http://reluk.ca/project/lexicon.brec
+            - Tells which project to build.
+
+        <target name>…
+            / The name or names of one or more build targets, each proper to the project.
+            - Tells which target or targets of the project to build.
+                / A project’s targets are declared in a source file conventionally named
+                  either `BuildTarget.java` or `builder/Target.java`.
+                    : see e.g. ../template/BuildTarget.java
+            - Letter case is insignificant.
+            - Characters ‘-’ and ‘_’ are taken as equivalent.
+            - Abbreviation is allowed: a viable name is any substring that identifies
+              the target precisely, appearing in the name of no other target.
 
 
     ━━━━━━━━━━━━━━━━━━━
@@ -25,7 +31,7 @@
         - For the common case of a Java project with a single package,
           typically all you need is `BuildTarget.java`.
             : see ../example/mixed_top/
-        >+ cd <command-directory>
+        >+ cd <command directory>
         >+ cp building/Makeshift/template/BuildTarget.java <project>/
         + Edit your `BuildTarget.java`.
             + Correct the package name.
@@ -71,4 +77,4 @@
             : see clean.brec
 
 
-                                                    \ Copyright © 2020-2021  Michael Allan.  Licence MIT.
+                                                    \ Copyright © 2020-2022  Michael Allan.  Licence MIT.
