@@ -12,7 +12,8 @@ import static java.nio.file.FileVisitResult.CONTINUE;
 
 /** A shell command to remove all impermanent state and output files.
   *
-  *     @see <a href='http://reluk.ca/project/building/Makeshift/bin/clean.brec'>The `clean` command</a>
+  *     @see <a href='http://reluk.ca/project/building/Makeshift/bin/clean.brec.xht'>
+  *       The `clean` command</a>
   */
 public final class CleanCommand extends SimpleFileVisitor<Path> { // [AFN]
 

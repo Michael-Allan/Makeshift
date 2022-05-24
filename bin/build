@@ -19,7 +19,8 @@ import static java.nio.file.Files.getLastModifiedTime;
 
 /** A shell command to compile the software of a project and prepare it for use.
   *
-  *     @see <a href='http://reluk.ca/project/building/Makeshift/bin/build.brec'>The `build` command</a>
+  *     @see <a href='http://reluk.ca/project/building/Makeshift/bin/build.brec.xht'>
+  *       The `build` command</a>
   */
 final class BuildCommand { // [AFN]
 
