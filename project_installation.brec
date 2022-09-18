@@ -9,18 +9,18 @@ Installation instructions for Makeshift
             + Ensure the path to its installation directory is exported as
               environment variable `JDK_HOME`.
                 >+ echo $JDK_HOME
-                    / ⇒  /opt/jdk-17
+                    / ⇒  /opt/jdk-18
                 if( necessary )
                     + Add the equivalent of following to your login initializer,
                       e.g. `~/.profile`, `~/.bash_profile` or what have you.
 
-                          JDK_HOME=/var/unbak/opt/jdk-17
+                          JDK_HOME=/opt/jdk-18
                           export JDK_HOME
 
             + Confirm the JDK commands are accessible.
                 >+ $JDK_HOME/bin/javac --version
-                        / ⇒  javac 17
-                    - Expect a version of 17, or later.
+                        / ⇒  javac 18
+                    - Expect a version of 18, or later.
         3+ Install the files of the present project.
             >+ cd <command directory>/
                 / The command directory is where project installations are accessible by their
@@ -51,4 +51,4 @@ Installation instructions for Makeshift
             : join @ http://reluk.ca/project/Breccia/project_installation.brec
 
 
-                                                         \ Copyright © 2020  Michael Allan.  Licence MIT.
+                                                   \ Copyright © 2020, 2022  Michael Allan.  Licence MIT.

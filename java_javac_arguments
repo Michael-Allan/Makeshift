@@ -12,7 +12,7 @@
  # --enable-preview
       # Any actual use of a preview feature results in a warning visible to the user
       # which (in most cases) cannot be suppressed.  https://openjdk.java.net/jeps/12
-   --source 17 # To allow for `--enable-preview` above.
+   --source 18 # To allow for any `--enable-preview` above.
       # Otherwise only `./java_arguments` would need this argument, q.v. for the reason.
 
 # NOTE
