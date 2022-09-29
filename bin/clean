@@ -75,7 +75,7 @@ public final class CleanCommand extends SimpleFileVisitor<Path> { // [AFN]
 // ─────
 //   AFN  Atypical file naming is allowed here, as explained in `./build`.
 //
-//   SS · Long form `--split-string` is for Emacs, as explained in `./build`.
+//   SS · Long-form option `--split-string` is for Emacs, as explained in `./build`.
 
 
 
