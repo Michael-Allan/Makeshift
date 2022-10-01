@@ -8,6 +8,7 @@ import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
+import static java.lang.System.out;
 
 
 /** A shell command to remove all impermanent state and output files.
@@ -67,7 +68,11 @@ public final class CleanCommand extends SimpleFileVisitor<Path> { // [AFN]
         final Path outDirectory = Path.of( System.getProperty("java.io.tmpdir"), "building.Makeshift" );
         if( !Files.isDirectory( outDirectory )) return;
         Files.walkFileTree( outDirectory, CleanCommand.this );
-        if( count != 0 ) System.out.println( count ); }}
+        if( count > 0 ) {
+            out.print( count );
+            out.print( " intermediate output file" );
+            if( count > 1 ) out.print( 's' );
+            out.println( " deleted" ); }}}
 
 
 
