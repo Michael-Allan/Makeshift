@@ -14,9 +14,9 @@ import static building.Makeshift.Bootstrap.UserError;
   * by putting into its {@linkplain BuilderBuilder#internalBuildingCode(Path) building code}
   * a source file named `Builder.java`.  The class definition must be public and must include
   * a public constructor that takes no parameters.  It must inherit from the present interface.
-  * It must depend on no code outside of the:
+  * It must depend on no code outside of the:<ul>
   *
-  * <ul><li>Standard libraries</li>
+  *     <li>Standard libraries</li>
   *     <li>{@linkplain BuilderBuilder#externalBuildingCode() External building code}</li>
   *     <li>{@linkplain BuilderBuilder#internalBuildingCode(Path) Internal building code}</li></ul>
   */
@@ -54,9 +54,9 @@ public interface Builder {
 
 
 
-    /** Finds the target name that uniquely matches `targ`.  The following search conditions apply.
+    /** Finds the target name that uniquely matches `targ`.  The following search conditions apply.<ul>
       *
-      * <ul><li>Letter case is insignificant.</li>
+      *     <li>Letter case is insignificant.</li>
       *     <li>Any dash character ‘-’ of `targ` is treated as an underscore ‘_’.</li>
       *     <li>Abbreviation is allowed: `targ` may be any substring of the target name
       *         that appears in no other target name.</li></ul>

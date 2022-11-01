@@ -21,9 +21,9 @@ import static building.Makeshift.Bootstrap.UserError;
   * a project may define its own builder by putting a source file named `BuilderBuilder.java` into its
   * {@linkplain #internalBuildingCode(Path) building code}.  The class definition must be public and must
   * include a public constructor that takes no parameters.  It must inherit from the present interface.
-  * It must depend on no code outside of:
+  * It must depend on no code outside of:<ul>
   *
-  * <ul><li>The standard libraries</li>
+  *     <li>The standard libraries</li>
   *     <li>`{@linkplain Bootstrap             Bootstrap}`</li>
   *     <li>`{@linkplain Builder               Builder}`</li>
   *     <li>                                  `BuilderBuilder` (the present interface)</li>
