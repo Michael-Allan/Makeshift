@@ -4,7 +4,10 @@ package building.Makeshift;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import static building.Makeshift.Bootstrap.addCompilableSource;
