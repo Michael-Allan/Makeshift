@@ -7,6 +7,7 @@ import java.nio.file.Path;
 
 import static building.Makeshift.Bootstrap.Unhandled;
 import static building.Makeshift.Bootstrap.UserError;
+import static java.nio.file.Files.isRegularFile;
 
 
 /** A builder of a project’s software.  It compiles the code of the project and prepares it for use.
@@ -42,7 +43,7 @@ public interface Builder {
     public static Path implementationFile( final Path projectPath ) { // Cf. @ `BuilderBuilder`.
         Bootstrap.verify( projectPath );
         Path p = BuilderBuilder.internalBuildingCode(projectPath).resolve( "Builder.java" );
-        if( !Files.isRegularFile( p )) p = implementationFileDefault;
+        if( !isRegularFile( p )) p = implementationFileDefault;
         return p; }
 
 
@@ -84,4 +85,4 @@ public interface Builder {
 
 
 
-                                                        // Copyright © 2020  Michael Allan.  Licence MIT.
+                                                  // Copyright © 2020, 2022  Michael Allan.  Licence MIT.

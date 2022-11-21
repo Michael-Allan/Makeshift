@@ -18,6 +18,7 @@ import static building.Makeshift.Bootstrap.typeName;
 import static building.Makeshift.Bootstrap.verify;
 import static building.Makeshift.Bootstrap.Unhandled;
 import static building.Makeshift.Bootstrap.UserError;
+import static java.nio.file.Files.isRegularFile;
 
 
 /** A builder of software builders.  In place of the {@linkplain BuilderBuilderDefault default},
@@ -121,7 +122,7 @@ public interface BuilderBuilder {
     public static Path implementationFile( final Path projectPath ) { // Cf. @ `Builder`.
         verify( projectPath );
         Path p = internalBuildingCode(projectPath).resolve( "BuilderBuilder.java" );
-        if( !Files.isRegularFile( p )) p = implementationFileDefault;
+        if( !isRegularFile( p )) p = implementationFileDefault;
         return p; }
 
 
@@ -201,7 +202,7 @@ public interface BuilderBuilder {
     public default Path targetFile() {
         final Path iBC = internalBuildingCode( projectPath() );
         Path p = iBC.resolve( "BuildTarget.java" );
-        if( !Files.isRegularFile( p )) p = iBC.resolve( "Target.java" );
+        if( !isRegularFile( p )) p = iBC.resolve( "Target.java" );
         return p; }
 
 
@@ -239,4 +240,4 @@ public interface BuilderBuilder {
 
 
 
-                                                   // Copyright © 2020-2021  Michael Allan.  Licence MIT.
+                                                   // Copyright © 2020-2022  Michael Allan.  Licence MIT.
