@@ -4,6 +4,7 @@ package building.Makeshift;
 
 import java.nio.file.Path;
 
+import static building.Makeshift.Bootstrap.toProperPath;
 import static building.Makeshift.Bootstrap.verify;
 
 
@@ -17,7 +18,7 @@ public class BuilderBuilderDefault implements BuilderBuilder {
     public BuilderBuilderDefault( final String projectPackage ) {
         verify( projectPackage );
         this.projectPackage = projectPackage;
-        this.projectPath = Bootstrap.pathOf( projectPackage ); }
+        this.projectPath = toProperPath( projectPackage ); }
 
 
 

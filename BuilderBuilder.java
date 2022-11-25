@@ -11,9 +11,9 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 import static building.Makeshift.Bootstrap.addCompilableSource;
-import static building.Makeshift.Bootstrap.packageOf;
-import static building.Makeshift.Bootstrap.pathOf;
 import static building.Makeshift.Bootstrap.pathTester_true;
+import static building.Makeshift.Bootstrap.toPackageName;
+import static building.Makeshift.Bootstrap.toProperPath;
 import static building.Makeshift.Bootstrap.typeName;
 import static building.Makeshift.Bootstrap.verify;
 import static building.Makeshift.Bootstrap.Unhandled;
@@ -37,8 +37,8 @@ public interface BuilderBuilder {
 
 
     /** Packages of building code additional to
-      * the {@linkplain #internalBuildingCode() internal building code}.  The added code
-      * comprises all `.java` files of the {@linkplain Bootstrap#pathOf(String) equivalent directories},
+      * the {@linkplain #internalBuildingCode() internal building code}.  The added code comprises
+      * all `.java` files of the {@linkplain Bootstrap#toProperPath(String) equivalent directories},
       * exclusive of their subdirectories.  Such code may be intended for the use of other projects, for
       * example, as part of their {@linkplain #externalBuildingCode() <em>external</em> building code}.
       *
@@ -78,7 +78,7 @@ public interface BuilderBuilder {
         final Predicate<Path> tester = targetFile().getFileName().toString().equals( "Target.java" ) ?
           pathTester_true : p -> p.getFileName().toString().startsWith("Build");
         addCompilableSource( sourceNames, internalBuildingCode(projectPath()), tester );
-        addedBuildingCode().forEach( pkg -> addCompilableSource( sourceNames, pathOf(pkg) ));
+        addedBuildingCode().forEach( pkg -> addCompilableSource( sourceNames, toProperPath(pkg) ));
         if( sourceNames.size() > 0 ) Bootstrap.compile( owningProject, sourceNames ); }
 
 
@@ -99,7 +99,7 @@ public interface BuilderBuilder {
       */
     public static BuilderBuilder forPackage( final String projectPackage ) throws UserError {
         verify( projectPackage );
-        return get( projectPackage, /*projectPath*/pathOf( projectPackage )); }
+        return get( projectPackage, /*projectPath*/toProperPath( projectPackage )); }
 
 
 
@@ -109,7 +109,7 @@ public interface BuilderBuilder {
       */
     public static BuilderBuilder forPath( final Path projectPath ) throws UserError {
         verify( projectPath );
-        return get( /*projectPackage*/packageOf(projectPath), projectPath ); }
+        return get( /*projectPackage*/toPackageName(projectPath), projectPath ); }
 
 
 
@@ -228,7 +228,7 @@ public interface BuilderBuilder {
 
       // Construct an instance
       // ─────────────────────
-        final String cName = packageOf(iDirectory) + '.' + iSimpleTypeName;
+        final String cName = toPackageName(iDirectory) + '.' + iSimpleTypeName;
         try {
             final Class<? extends BuilderBuilder> c = Class.forName( cName )
               .asSubclass( BuilderBuilder.class );

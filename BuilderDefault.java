@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.util.*;
 
 import static building.Makeshift.Project.UserError;
-import static building.Makeshift.Project.pathOf;
+import static building.Makeshift.Project.toProperPath;
 import static building.Makeshift.Project.verify;
 
 
@@ -29,7 +29,7 @@ public class BuilderDefault<T extends Enum<T>> implements Builder {
         verify( targetClass, projectPackage );
         this.targetClass = targetClass;
         this.projectPackage = projectPackage;
-        projectPath = pathOf( projectPackage ); }
+        projectPath = toProperPath( projectPackage ); }
 
 
 
@@ -50,8 +50,9 @@ public class BuilderDefault<T extends Enum<T>> implements Builder {
 
 
 
-    /** Packages of Java code proper to the owning project, exclusive of building code.  The code
-      * comprises all `.java` files of the {@linkplain Project#pathOf(String) equivalent directories},
+    /** Packages of Java code proper to the owning project, exclusive of building code.
+      * The code comprises all `.java` files of the
+      * {@linkplain Project#toProperPath(String) equivalent directories},
       * exclusive of their subdirectories.
       *
       * <p>The default implementation is a singleton set comprising the proper package
@@ -117,7 +118,7 @@ public class BuilderDefault<T extends Enum<T>> implements Builder {
       */
     private void buildTo_Java_class_files() throws UserError {
         final List<String> sourceNames = new ArrayList<>();
-        JavaCode().forEach( pkg -> Project.addCompilableSource( sourceNames, pathOf(pkg) ));
+        JavaCode().forEach( pkg -> Project.addCompilableSource( sourceNames, toProperPath(pkg) ));
         if( sourceNames.size() > 0 ) {
             Project.compile( projectPackage, sourceNames, javacArguments() ); }}
 

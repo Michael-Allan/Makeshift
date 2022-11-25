@@ -65,9 +65,10 @@ public final class CleanCommand extends SimpleFileVisitor<Path> { // [AFN]
 
 
     private void run() throws IOException {
-        final Path outDirectory = Path.of( System.getProperty("java.io.tmpdir"), "building.Makeshift" );
-        if( !Files.isDirectory( outDirectory )) return;
-        Files.walkFileTree( outDirectory, CleanCommand.this );
+        final Path projectOutputDirectory = Path.of( System.getProperty("java.io.tmpdir"),
+          "building.Makeshift" );
+        if( !Files.isDirectory( projectOutputDirectory )) return;
+        Files.walkFileTree( projectOutputDirectory, CleanCommand.this );
         if( count > 0 ) {
             out.print( count );
             out.print( " intermediate output file" );

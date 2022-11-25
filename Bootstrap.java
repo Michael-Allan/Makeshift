@@ -112,39 +112,6 @@ public class Bootstrap {
 
 
 
-    /** The output directory of the present project.
-      */
-    public static final Path outDirectory = Path.of(
-      System.getProperty("java.io.tmpdir"), "building.Makeshift" );
-
-
-
-    /** Converts `path` to an equivalent Java package name.
-      *
-      *     @throws IllegalArgumentException If `path` is absolute.
-      */
-    public static String packageOf( final Path path ) {
-        if( path.isAbsolute() ) throw new IllegalArgumentException();
-        return path.toString().replace( separatorChar, '.' ); }
-
-
-
-    /** Converts `JavaPackage` to an equivalent relative path.
-      */
-    public static Path pathOf( final String JavaPackage ) {
-        return Path.of( pathStringOf( JavaPackage )); }
-        // Changing?  Sync → any `pathOf` in each file of `bin/*`.
-
-
-
-    /** Converts `JavaPackage` to an equivalent relative path.
-      */
-    public static String pathStringOf( final String JavaPackage ) {
-        return JavaPackage.replace( '.', separatorChar ); }
-        // Changing?  Sync → any `pathStringOf` in each file of `bin/*`.
-
-
-
     /** A path tester that always answers `true`.
       */
     public static final Predicate<Path> pathTester_true = _p -> true;
@@ -170,9 +137,16 @@ public class Bootstrap {
 
 
 
+    /** The output directory of the present project.
+      */
+    public static final Path projectOutputDirectory = Path.of( System.getProperty("java.io.tmpdir"),
+      "building.Makeshift" );
+
+
+
     /** The proper path of the present project.
       */
-    public static final Path projectPath = pathOf( "building.Makeshift" );
+    public static final Path projectPath = toProperPath( "building.Makeshift" );
 
 
 
@@ -197,13 +171,45 @@ public class Bootstrap {
       *     @param simpleTypeName The corresponding {@linkplain #simpleTypeName(Path) simple type name}.
       */
     public static boolean toCompile( final Path sourceFile, final String simpleTypeName ) {
-        final Path classFile = outDirectory.resolve(
+        final Path classFile = projectOutputDirectory.resolve(
           sourceFile.resolveSibling( simpleTypeName + ".class" ));
         if( Files.exists( classFile )) {
             try {
                 return getLastModifiedTime(sourceFile).compareTo(getLastModifiedTime(classFile)) >= 0; }
             catch( IOException x ) { throw new Unhandled( x ); }}
         return true; }
+
+
+
+    /** Returns the name of the Java package at the given proper path.
+      *
+      *     @param properPath The relative path proper to a Java package.
+      *     @throws IllegalArgumentException If `properPath` is absolute.
+      */
+    public static String toPackageName( final Path properPath ) {
+        if( properPath.isAbsolute() ) throw new IllegalArgumentException();
+        return properPath.toString().replace( separatorChar, '.' ); }
+
+
+
+    /** Returns the proper path of the named Java package.
+      *
+      *     @param name The name of a Java package.
+      *     @return The relative path proper to the named package.
+      */
+    public static Path toProperPath( final String name ) { return Path.of( toProperPathString( name )); }
+      // Changing?  Sync → `toProperPath` in `bin/build`.
+
+
+
+    /** Returns the proper path of the named Java package.
+      *
+      *     @param name The name of a Java package.
+      *     @return The relative path proper to the named package.
+      */
+    public static String toProperPathString( final String name ) {
+        return name.replace( '.', separatorChar ); }
+        // Changing?  Sync → `toProperPathString` in `bin/build`.
 
 
 
@@ -216,7 +222,7 @@ public class Bootstrap {
       *     @see #simpleTypeName(Path)
       */
     public static String typeName( final Path sourcePath ) {
-        return packageOf(sourcePath.getParent()) + '.' + simpleTypeName(sourcePath); }
+        return toPackageName(sourcePath.getParent()) + '.' + simpleTypeName(sourcePath); }
 
 
 
@@ -252,7 +258,7 @@ public class Bootstrap {
       *     @throws IllegalArgumentException
       */
     public static void verify( final String projectPackage, final Path projectPath ) {
-        if( !pathStringOf(projectPackage).equals( projectPath.toString() )) {
+        if( !toProperPathString(projectPackage).equals( projectPath.toString() )) {
             throw new IllegalArgumentException( "Inequivalent `projectPackage` and `projectPath`" ); }}
 
 
@@ -323,4 +329,4 @@ public class Bootstrap {
 
 
 
-                                                   // Copyright © 2020-2021  Michael Allan.  Licence MIT.
+                                                   // Copyright © 2020-2022  Michael Allan.  Licence MIT.

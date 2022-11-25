@@ -68,22 +68,6 @@ final class BuildCommand { // [AFN]
 
 
 
-    /** Converts `JavaPackage` to an equivalent relative path.
-      */
-    public static Path pathOf( final String JavaPackage ) {
-        return Path.of( pathStringOf( JavaPackage )); }
-        // Changing?  Sync → `Bootstrap.pathOf`.
-
-
-
-    /** Converts `JavaPackage` to an equivalent relative path.
-      */
-    public static String pathStringOf( final String JavaPackage ) {
-        return JavaPackage.replace( '.', separatorChar ); }
-        // Changing?  Sync → `Bootstrap.pathStringOf`.
-
-
-
     /** The proper path of the project to build.
       */
     private final Path projectPath;
@@ -91,12 +75,13 @@ final class BuildCommand { // [AFN]
 
 
     private void run() { // A bootstrapped process comprising three build stages:
-        final Path outDirectory = Path.of( System.getProperty("java.io.tmpdir"), "building.Makeshift" );
+        final Path projectOutputDirectory = Path.of( System.getProperty("java.io.tmpdir"),
+          "building.Makeshift" );
         final boolean wasClean;
-        if( Files.isDirectory( outDirectory )) wasClean = false;
+        if( Files.isDirectory( projectOutputDirectory )) wasClean = false;
         else {
-            try { createDirectory( outDirectory ); } /* So avoid a warning on the first call to `javac`:
-              `“[path] bad path element… no such file or directory”. */
+            try { createDirectory( projectOutputDirectory ); } /* So avoid a warning on the first call
+              to `javac`: `“[path] bad path element… no such file or directory”. */
             catch( IOException x ) { throw new Unhandled( x ); }
             wasClean = true; }
 
@@ -104,14 +89,14 @@ final class BuildCommand { // [AFN]
       // ────────────────────────────
         final List<String> compilerArguments = new ArrayList<>(); { // Empty if no code needs compiling.
             // Already the working directory is the command directory, as stipulated in `./build.brec`.
-            final Path p = pathOf( "building.Makeshift" ); // Proper path of the present project.
+            final Path p = toProperPath( "building.Makeshift" ); // Proper path of the present project.
             for( String t: new String[]{ // ↓ Changing these?  Sync → `BuilderBuilder` API description.
                   "Bootstrap", "Builder", "BuilderBuilder", "BuilderBuilderDefault" }) {
                 final Path sourceFile = p.resolve( t + ".java" );
                 final boolean toCompile;
                 if( wasClean ) toCompile = true;
                 else {
-                    final Path classFile = outDirectory.resolve( p.resolve( t + ".class" ));
+                    final Path classFile = projectOutputDirectory.resolve( p.resolve( t + ".class" ));
                     if( Files.exists( classFile )) {
                         try { toCompile = getLastModifiedTime(sourceFile)
                                .compareTo(getLastModifiedTime(classFile)) >= 0; }
@@ -154,7 +139,8 @@ final class BuildCommand { // [AFN]
           // did not exist before the present runtime.  It exists now, but still the class loader will
           // not look there for class files (JDK 14.0.2).  Therefore make a new class loader.
             try {
-              loader = new URLClassLoader( new URL[] { new URL( "file://" + outDirectory + "/" )}); }
+              loader = new URLClassLoader( new URL[] {
+                new URL( "file://" + projectOutputDirectory + "/" )}); }
             catch( MalformedURLException x ) { throw new Unhandled( x ); }}
         try {
             Class<?> c;
@@ -193,6 +179,27 @@ final class BuildCommand { // [AFN]
                 System.exit( 1 ); }
             else throw new Unhandled( xIT ); }
         catch( ReflectiveOperationException x ) { throw new Unhandled( x ); }}
+
+
+
+    /** Returns the proper path of the named Java package.
+      *
+      *     @param name The name of a Java package.
+      *     @return The relative path proper to the named package.
+      */
+    public static Path toProperPath( final String name ) { return Path.of( toProperPathString( name )); }
+      // Changing?  Sync → `Bootstrap.toProperPath`.
+
+
+
+    /** Returns the proper path of the named Java package.
+      *
+      *     @param name The name of a Java package.
+      *     @return The relative path proper to the named package.
+      */
+    public static String toProperPathString( final String name ) {
+        return name.replace( '.', separatorChar ); }
+        // Changing?  Sync → `Bootstrap.toProperPathString`.
 
 
 
