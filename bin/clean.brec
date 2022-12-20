@@ -5,7 +5,7 @@
    - The `clean` command deletes the intermediate output files of Makeshift,
       together with the directory in which they are housed, `/tmp/building.Makeshift/`.
     - The working directory must be the command directory.
-        : see `^^working directory$` @ `^^shell commands$` @
+        : see `^*working directory$` @ `^*shell commands$` @
           http://reluk.ca/project/Java/editorial_guidelines.brec
 
 

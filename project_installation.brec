@@ -2,7 +2,7 @@ Installation instructions for Makeshift
 
     initial set-up
         1+ Ensure you are running Linux.
-            : see `^^operating system, assumption of Linux$` @
+            : see `^*operating system, assumption of Linux$` @
               http://reluk.ca/project/editorial_guidelines.brec
         2+ Ensure the latest JDK is installed and accessible.
             : see https://jdk.java.net/
@@ -26,7 +26,7 @@ Installation instructions for Makeshift
                 / The command directory is where project installations are accessible by their
                   proper paths.  The present project, for example, will shortly be accessible
                   at `building/Makeshift`.
-                    : see `^^command directory$` @ http://reluk.ca/project/lexicon.brec
+                    : see `^*command directory$` @ http://reluk.ca/project/lexicon.brec
             >+ git clone http://reluk.ca/var/repo/git/Makeshift.git building/Makeshift
         4+ Test your access to the Makeshift commands.
             >+ building/Makeshift/bin/build -?

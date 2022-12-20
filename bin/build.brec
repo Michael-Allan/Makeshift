@@ -3,14 +3,14 @@
         build <project path> <target name>…
 
     - The working directory must be the command directory.
-        : see `^^working directory$` @ `^^shell commands$` @
+        : see `^*working directory$` @ `^*shell commands$` @
           http://reluk.ca/project/Java/editorial_guidelines.brec
     - Two or more positional arguments are required:
 
         <project path>
             / The proper path of the project: the relative file path that identifies it universally.
                E.g. for the present project, use `building/Makeshift` or `building/Makeshift/`.
-                : see `^^proper path$` @ http://reluk.ca/project/lexicon.brec
+                : see `^*proper path$` @ http://reluk.ca/project/lexicon.brec
             - Tells which project to build.
 
         <target name>…
@@ -65,9 +65,9 @@
              
               build Breccia/Web/imager cl
 
-            : see `^^- Letter case is insignificant`
-            : see `^^- Characters ‘-’ and ‘_’ are taken as equivalent`
-            : see `^^- Abbreviation is allowed`
+            : see `^*- Letter case is insignificant`
+            : see `^*- Characters ‘-’ and ‘_’ are taken as equivalent`
+            : see `^*- Abbreviation is allowed`
 
 
     ━━━━━━━━━━
