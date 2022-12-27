@@ -6,7 +6,7 @@
  # --class-path /tmp/building.Makeshift/ # (given instead in `./java_javac_arguments`)
     -enableassertions
  # --enable-preview # (given instead in `./java_javac_arguments`)
- # --source 18 # (given instead in `./java_javac_arguments`)
+ # --source 19 # (given instead in `./java_javac_arguments`)
       # To enable source launch of a file that lacks a `.java` extension.
       # https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html#using-source-file-mode-to-launch-single-file-source-code-programs
     -XX:+ShowCodeDetailsInExceptionMessages # https://openjdk.java.net/jeps/358
