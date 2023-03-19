@@ -10,7 +10,7 @@
         <project path>
             / The proper path of the project: the relative file path that identifies it universally.
                E.g. for the present project, use `building/Makeshift` or `building/Makeshift/`.
-                : see `^*proper path$` @ http://reluk.ca/project/lexicon.brec
+                : see `^*proper path$` @ http://reluk.ca/project/glossary.brec
             - Tells which project to build.
 
         <target name>…
