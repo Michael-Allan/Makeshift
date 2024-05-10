@@ -1,12 +1,12 @@
-package building.Makeshift;
+package Makeshift;
 
 // Changes to this file immediately affect the next build.  Treat it as a build script.
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static building.Makeshift.Bootstrap.Unhandled;
-import static building.Makeshift.Bootstrap.UserError;
+import static Makeshift.Bootstrap.Unhandled;
+import static Makeshift.Bootstrap.UserError;
 import static java.nio.file.Files.isRegularFile;
 
 

@@ -9,7 +9,7 @@
 
         <project path>
             / The proper path of the project: the relative file path that identifies it universally.
-               E.g. for the present project, use `building/Makeshift` or `building/Makeshift/`.
+               E.g. for the present project, use `Makeshift` or `Makeshift/`.
                 : see `^*proper path$` @ http://reluk.ca/project/glossary.brec
             - Tells which project to build.
 
@@ -32,7 +32,7 @@
           typically all you need is `BuildTarget.java`.
             : see ../example/mixed_top/
         >+ cd <command directory>
-        >+ cp building/Makeshift/template/BuildTarget.java <project>/
+        >+ cp Makeshift/template/BuildTarget.java <project>/
         + Edit your `BuildTarget.java`.
             + Correct the package name.
             + Delete the name of any target inapplicable to your project.
@@ -51,7 +51,7 @@
         - A simple build, requiring no other project to be installed,
           is the `builder` target of the present project.
 
-              build building/Makeshift builder
+              build Makeshift builder
 
         - A more typical form of build is:
 

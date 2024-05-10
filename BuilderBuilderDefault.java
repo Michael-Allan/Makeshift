@@ -1,11 +1,11 @@
-package building.Makeshift;
+package Makeshift;
 
 // Changes to this file immediately affect the next build.  Treat it as a build script.
 
 import java.nio.file.Path;
 
-import static building.Makeshift.Bootstrap.toProperPath;
-import static building.Makeshift.Bootstrap.verify;
+import static Makeshift.Bootstrap.toProperPath;
+import static Makeshift.Bootstrap.verify;
 
 
 /** Default implementation of a builder builder.

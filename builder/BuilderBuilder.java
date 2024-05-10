@@ -1,4 +1,4 @@
-package building.Makeshift.builder;
+package Makeshift.builder;
 
 // Changes to this file immediately affect the next build.  Treat it as a build script.
 
@@ -8,15 +8,15 @@ import java.util.Set;
 
 /** The builder builder proper to Makeshift.
   */
-public final class BuilderBuilder extends building.Makeshift.BuilderBuilderDefault {
+public final class BuilderBuilder extends Makeshift.BuilderBuilderDefault {
 
 
     public BuilderBuilder() {
-        super( "building.Makeshift", building.Makeshift.Bootstrap.projectPath ); }
+        super( "Makeshift", Makeshift.Bootstrap.projectPath ); }
 
 
     public @Override Set<String> addedBuildingCode() {
-        return Set.of( "building.Makeshift", "building.Makeshift.template" ); }
+        return Set.of( "Makeshift", "Makeshift.template" ); }
 
 
     public @Override Set<String> externalBuildingCode() { return Set.of(); }}

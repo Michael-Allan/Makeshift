@@ -3,7 +3,7 @@
 # This is a `java` command-line argument file; a referent of the files under `./bin/`.  For syntax:
 # `https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html#java-command-line-argument-files`.
 
- # --class-path /tmp/building.Makeshift/ # (given instead in `./java_javac_arguments`)
+ # --class-path /tmp/Makeshift/ # (given instead in `./java_javac_arguments`)
     -enableassertions
  # --enable-preview # (given instead in `./java_javac_arguments`)
  # --source 20 # (given instead in `./java_javac_arguments`)

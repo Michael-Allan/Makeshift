@@ -1,4 +1,4 @@
-package building.Makeshift;
+package Makeshift;
 
 // Changes to this file immediately affect the next build.  Treat it as a build script.
 
@@ -10,14 +10,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import static building.Makeshift.Bootstrap.addCompilableSource;
-import static building.Makeshift.Bootstrap.pathTester_true;
-import static building.Makeshift.Bootstrap.toPackageName;
-import static building.Makeshift.Bootstrap.toProperPath;
-import static building.Makeshift.Bootstrap.typeName;
-import static building.Makeshift.Bootstrap.verify;
-import static building.Makeshift.Bootstrap.Unhandled;
-import static building.Makeshift.Bootstrap.UserError;
+import static Makeshift.Bootstrap.addCompilableSource;
+import static Makeshift.Bootstrap.pathTester_true;
+import static Makeshift.Bootstrap.toPackageName;
+import static Makeshift.Bootstrap.toProperPath;
+import static Makeshift.Bootstrap.typeName;
+import static Makeshift.Bootstrap.verify;
+import static Makeshift.Bootstrap.Unhandled;
+import static Makeshift.Bootstrap.UserError;
 import static java.nio.file.Files.isRegularFile;
 
 
@@ -85,11 +85,11 @@ public interface BuilderBuilder {
 
     /** The proper package of each project, less the {@linkplain #projectPackage() owning project},
       * whose {@linkplain #internalBuildingCode() building code} the software builder may depend on.
-      * The default implementation is a singleton set comprising ‘building.Makeshift’.
+      * The default implementation is a singleton set comprising ‘Makeshift’.
       *
       *     @see #internalBuildingCode(Path)
       */
-    public default Set<String> externalBuildingCode() { return Set.of( "building.Makeshift" ); }
+    public default Set<String> externalBuildingCode() { return Set.of( "Makeshift" ); }
 
 
 
@@ -148,9 +148,9 @@ public interface BuilderBuilder {
       *     @param projectPath The proper path of the project.
       *     @see #addedBuildingCode()
       *     @see #externalBuildingCode()
-      *     @see <a href='http://reluk.ca/project/building/Makeshift/example/sub/'      >Example of (a)</a>
-      *     @see <a href='http://reluk.ca/project/building/Makeshift/example/top/'      >Example of (b)</a>
-      *     @see <a href='http://reluk.ca/project/building/Makeshift/example/mixed_top/'>Example of (c)</a>
+      *     @see <a href='http://reluk.ca/project/Makeshift/example/sub/'      >Example of (a)</a>
+      *     @see <a href='http://reluk.ca/project/Makeshift/example/top/'      >Example of (b)</a>
+      *     @see <a href='http://reluk.ca/project/Makeshift/example/mixed_top/'>Example of (c)</a>
       */
     public static Path internalBuildingCode( final Path projectPath ) {
         verify( projectPath );

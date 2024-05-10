@@ -25,23 +25,23 @@ Installation instructions for Makeshift
             >+ cd <command directory>/
                 / The command directory is where project installations are accessible by their
                   proper paths.  The present project, for example, will shortly be accessible
-                  at `building/Makeshift`.
+                  at `Makeshift`.
                     : see `^*command directory$` @ http://reluk.ca/project/glossary.brec
-            >+ git clone http://reluk.ca/var/repo/git/Makeshift.git building/Makeshift
+            >+ git clone http://reluk.ca/var/repo/git/Makeshift.git Makeshift
         4+ Test your access to the Makeshift commands.
-            >+ building/Makeshift/bin/build -?
+            >+ Makeshift/bin/build -?
                 / ⇒  Usage: build <project> <target>...
         5+ Get convenient access to all Makeshift commands.
             + Append the directory of this project’s shell commands to the search path.
-                >+ PATH=$PATH:<command directory>/building/Makeshift/bin
+                >+ PATH=$PATH:<command directory>/Makeshift/bin
             + Test it.
                 >+ which build
-                    / ⇒  <command directory>/building/Makeshift/bin/build
+                    / ⇒  <command directory>/Makeshift/bin/build
                 >+ build -?
                     / ⇒  Usage: build <project> <target>...
             + Make it permanent by adding the same to your login initializer:
 
-                  PATH=$PATH:<command directory>/building/Makeshift/bin
+                  PATH=$PATH:<command directory>/Makeshift/bin
 
         working example
             : see http://reluk.ca/.profile

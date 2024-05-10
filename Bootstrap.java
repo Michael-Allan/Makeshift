@@ -1,4 +1,4 @@
-package building.Makeshift;
+package Makeshift;
 
 // Changes to this file immediately affect the next build.  Treat it as a build script.
 
@@ -82,8 +82,8 @@ public class Bootstrap {
         compilerArguments.add( System.getProperty("java.home") + "/bin/javac" );
           // The Java installation at `java.home` is known to include `javac` because also
           // it is a JDK installation, as assured by the `JDK_HOME` atop `bin/build`.
-        compilerArguments.add( "@building/Makeshift/java_javac_arguments" );
-        compilerArguments.add( "@building/Makeshift/javac_arguments" );
+        compilerArguments.add( "@Makeshift/java_javac_arguments" );
+        compilerArguments.add( "@Makeshift/javac_arguments" );
         compilerArguments.addAll( additionalArguments );
         compilerArguments.addAll( sourceNames );
         final ProcessBuilder pB = new ProcessBuilder( compilerArguments );
@@ -129,7 +129,7 @@ public class Bootstrap {
         if( !Objects.equals( projectShowingProgress, projectPackage )) {
             projectShowingProgress = projectPackage;
             System.out.println( projectPackage == null ?
-              "building.Makeshift (bootstrap)" : projectPackage ); }
+              "Makeshift (bootstrap)" : projectPackage ); }
         System.out.print( "    " );
         System.out.print( type );
         System.out.print( ' ' );
@@ -140,13 +140,13 @@ public class Bootstrap {
     /** The output directory of the present project.
       */
     public static final Path projectOutputDirectory = Path.of( System.getProperty("java.io.tmpdir"),
-      "building.Makeshift" );
+      "Makeshift" );
 
 
 
     /** The proper path of the present project.
       */
-    public static final Path projectPath = toProperPath( "building.Makeshift" );
+    public static final Path projectPath = toProperPath( "Makeshift" );
 
 
 

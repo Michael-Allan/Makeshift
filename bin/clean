@@ -1,5 +1,5 @@
-#!/usr/bin/env --split-string=${JDK_HOME}/bin/java @building/Makeshift/java_arguments @building/Makeshift/java_javac_arguments \c [SS]
-package building.Makeshift; // [AFN]
+#!/usr/bin/env --split-string=${JDK_HOME}/bin/java @Makeshift/java_arguments @Makeshift/java_javac_arguments \c [SS]
+package Makeshift; // [AFN]
 
 // This command runs directly from the present source file, it needs no compiling.
 
@@ -13,7 +13,7 @@ import static java.lang.System.out;
 
 /** A shell command to remove all impermanent state and output files.
   *
-  *     @see <a href='http://reluk.ca/project/building/Makeshift/bin/clean.brec.xht'>
+  *     @see <a href='http://reluk.ca/project/Makeshift/bin/clean.brec.xht'>
   *       The `clean` command</a>
   */
 public final class CleanCommand extends SimpleFileVisitor<Path> { // [AFN]
@@ -66,7 +66,7 @@ public final class CleanCommand extends SimpleFileVisitor<Path> { // [AFN]
 
     private void run() throws IOException {
         final Path projectOutputDirectory = Path.of( System.getProperty("java.io.tmpdir"),
-          "building.Makeshift" );
+          "Makeshift" );
         if( !Files.isDirectory( projectOutputDirectory )) return;
         Files.walkFileTree( projectOutputDirectory, CleanCommand.this );
         if( count > 0 ) {

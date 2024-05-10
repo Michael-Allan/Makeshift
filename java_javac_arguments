@@ -8,7 +8,7 @@
 # commands written into the source-launch files under `./bin/`.  Not all arguments are allowed here;
 # see `https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html#using-source-file-mode-to-launch-single-file-source-code-programs`.
 
-   --class-path /tmp/building.Makeshift/ # Cf. `-d` in `./javac_arguments`.
+   --class-path /tmp/Makeshift/ # Cf. `-d` in `./javac_arguments`.
  # --enable-preview
       # Any actual use of a preview feature results in a warning visible to the user
       # which (in most cases) cannot be suppressed.  https://openjdk.java.net/jeps/12

@@ -1,4 +1,4 @@
-package building.Makeshift.template;
+package Makeshift.template;
 
 // Changes to this file immediately affect the next build.  Treat it as a build script.
 

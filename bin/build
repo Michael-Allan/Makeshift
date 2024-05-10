@@ -1,5 +1,5 @@
-#!/usr/bin/env --split-string=${JDK_HOME}/bin/java @building/Makeshift/java_arguments @building/Makeshift/java_javac_arguments \c [SS]
-package building.Makeshift; // [AFN]
+#!/usr/bin/env --split-string=${JDK_HOME}/bin/java @Makeshift/java_arguments @Makeshift/java_javac_arguments \c [SS]
+package Makeshift; // [AFN]
 
 // Changes to this file immediately affect the next build.  Treat it as a build script.
 
@@ -21,7 +21,7 @@ import static java.nio.file.Files.getLastModifiedTime;
 
 /** A shell command to compile the software of a project and prepare it for use.
   *
-  *     @see <a href='http://reluk.ca/project/building/Makeshift/bin/build.brec.xht'>
+  *     @see <a href='http://reluk.ca/project/Makeshift/bin/build.brec.xht'>
   *       The `build` command</a>
   */
 final class BuildCommand { // [AFN]
@@ -78,7 +78,7 @@ final class BuildCommand { // [AFN]
 
     private void run() { // A bootstrapped process comprising three build stages:
         final Path projectOutputDirectory = Path.of( System.getProperty("java.io.tmpdir"),
-          "building.Makeshift" );
+          "Makeshift" );
         final boolean wasClean;
         if( Files.isDirectory( projectOutputDirectory )) wasClean = false;
         else {
@@ -91,7 +91,7 @@ final class BuildCommand { // [AFN]
       // ────────────────────────────
         final List<String> compilerArguments = new ArrayList<>(); { // Empty if no code needs compiling.
             // Already the working directory is the command directory, as stipulated in `./build.brec`.
-            final Path p = toProperPath( "building.Makeshift" ); // Proper path of the present project.
+            final Path p = toProperPath( "Makeshift" ); // Proper path of the present project.
             for( String t: new String[]{ // ↓ Changing these?  Sync → `BuilderBuilder` API description.
                   "Bootstrap", "Builder", "BuilderBuilder", "BuilderBuilderDefault" }) {
                 final Path sourceFile = p.resolve( t + ".java" );
@@ -115,8 +115,8 @@ final class BuildCommand { // [AFN]
             compilerArguments.add( a++, System.getProperty("java.home") + "/bin/javac" );
               // The Java installation at `java.home` is known to include `javac` because also
               // it is a JDK installation, as assured by the `JDK_HOME` at top.
-            compilerArguments.add( a++, "@building/Makeshift/java_javac_arguments" );
-            compilerArguments.add( a,   "@building/Makeshift/javac_arguments" );
+            compilerArguments.add( a++, "@Makeshift/java_javac_arguments" );
+            compilerArguments.add( a,   "@Makeshift/javac_arguments" );
             final ProcessBuilder pB = new ProcessBuilder( compilerArguments );
             pB.redirectOutput( INHERIT );
             pB.redirectError( INHERIT );
@@ -151,14 +151,14 @@ final class BuildCommand { // [AFN]
 
               // inform the user
               // ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-                c = load( "building.Makeshift.Bootstrap" );
+                c = load( "Makeshift.Bootstrap" );
                 c.getMethod( "printProgressLeader", String.class, String.class )
                   .invoke( null/*static*/, null/*builder builder*/, "javac" );
                 System.out.println( sourceCount ); }
 
           // get a builder builder for the project to be built
           // ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-            c = load( "building.Makeshift.BuilderBuilder" );
+            c = load( "Makeshift.BuilderBuilder" );
             final Object builderBuilder = c.getMethod( "forPath", Path.class )
               .invoke( null/*static*/, projectPath );
             c = builderBuilder.getClass();
@@ -177,7 +177,7 @@ final class BuildCommand { // [AFN]
             while( ++t < tN ); }
         catch( final InvocationTargetException xIT ) {
             final Throwable x = xIT.getCause();
-            if( x != null && "building.Makeshift.Bootstrap$UserError".equals( x.getClass().getName() )) {
+            if( x != null && "Makeshift.Bootstrap$UserError".equals( x.getClass().getName() )) {
                 System.err.println( "build: " + x.getMessage() );
                 System.exit( 1 ); }
             else throw new Unhandled( xIT ); }

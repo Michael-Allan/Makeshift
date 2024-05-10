@@ -1,21 +1,21 @@
-package building.Makeshift;
+package Makeshift;
 
 // Changes to this file immediately affect the next build.  Treat it as a build script.
 
 import java.nio.file.Path;
 import java.util.*;
 
-import static building.Makeshift.Project.UserError;
-import static building.Makeshift.Project.toProperPath;
-import static building.Makeshift.Project.verify;
+import static Makeshift.Project.UserError;
+import static Makeshift.Project.toProperPath;
+import static Makeshift.Project.verify;
 
 
 /** Default implementation of a software builder.  It supports all the targets named in
-  * `building.Makeshift.template.{@linkplain building.Makeshift.template.BuildTarget BuildTarget}`,
+  * `Makeshift.template.{@linkplain Makeshift.template.BuildTarget BuildTarget}`,
   * but will refuse to build any outside of `T`.
   *
   *     @param <T> The type of build targets.  The names of all its targets should comprise
-  *       a subset of {@linkplain building.Makeshift.template.BuildTarget those supported}.
+  *       a subset of {@linkplain Makeshift.template.BuildTarget those supported}.
   */
 public class BuilderDefault<T extends Enum<T>> implements Builder {
 
@@ -59,7 +59,7 @@ public class BuilderDefault<T extends Enum<T>> implements Builder {
       * of the owning project.</p>
       *
       * <p>This method is not called unless the project declares build target
-      * `{@linkplain building.Makeshift.template.BuildTarget.Java_class_files Java_class_files}`.</p>
+      * `{@linkplain Makeshift.template.BuildTarget.Java_class_files Java_class_files}`.</p>
       */
     public Set<String> JavaCode() { return Set.of( projectPackage ); } /* Packages for elements
       because they are codeable by implementers as cross-platform literals, whereas paths are not. */
@@ -113,7 +113,7 @@ public class BuilderDefault<T extends Enum<T>> implements Builder {
 
 
 
-    /** @see building.Makeshift.template.BuildTarget.Java_class_files
+    /** @see Makeshift.template.BuildTarget.Java_class_files
       * @see #javacArguments()
       */
     private void buildTo_Java_class_files() throws UserError {
@@ -126,7 +126,7 @@ public class BuilderDefault<T extends Enum<T>> implements Builder {
 
     /** Additional arguments for the Java compiler.  The default implementation is an empty list.
       *
-      *     @see building.Makeshift.template.BuildTarget.Java_class_files
+      *     @see Makeshift.template.BuildTarget.Java_class_files
       */
     protected List<String> javacArguments() { return List.of(); }
 
@@ -134,7 +134,7 @@ public class BuilderDefault<T extends Enum<T>> implements Builder {
 
     private static boolean isSupportDeclared( final String target ) {
         boolean is = true;
-        try { building.Makeshift.template.BuildTarget.valueOf( target ); }
+        try { Makeshift.template.BuildTarget.valueOf( target ); }
         catch( IllegalArgumentException _x ) { is = false; }
         return is; }
 
