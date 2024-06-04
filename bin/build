@@ -1,5 +1,4 @@
 #!/usr/bin/env --split-string=${JDK_HOME}/bin/java @Makeshift/java_arguments @Makeshift/java_javac_arguments \c [SS]
-package Makeshift; // [AFN]
 
 // Changes to this file immediately affect the next build.  Treat it as a build script.
 
@@ -231,8 +230,14 @@ final class BuildCommand { // [AFN]
 //   AFN  Atypical file naming is allowed here.  ‘The compiler does not enforce the optional restriction
 //        defined at the end of JLS §7.6, that a type in a named package should exist in a file whose
 //        name is composed from the type name followed by the .java extension.’
-//        http://openjdk.java.net/jeps/330
-//        https://docs.oracle.com/javase/specs/jls/se15/html/jls-7.html#jls-7.6
+//        <https://openjdk.org/jeps/330>
+//        <https://docs.oracle.com/javase/specs/jls/se11/html/jls-7.html#jls-7.6>
+//
+//        No longer, however, does this allowance extend to the package name.  While in JDK releases
+//        prior to 22 “the launcher's source-file mode was permissive about which package, if any,
+//        was declared”, current releases enforce a correspondence between the declared package name
+//        and the file path.  Failing this, the launcher aborts with “end of path to source file
+//        does not match its package name”.  <https://openjdk.org/jeps/458>
 //
 //   SS · Here the long form `--split-string` (as opposed to `-S`) enables Emacs to recognize this file
 //        as Java source code.  See the note apropos of ‘source-launch files encoded with a shebang’ at
@@ -240,4 +245,4 @@ final class BuildCommand { // [AFN]
 
 
 
-                                             // Copyright © 2020-2021, 2023  Michael Allan.  Licence MIT.
+                                        // Copyright © 2020-2021, 2023-2024  Michael Allan.  Licence MIT.

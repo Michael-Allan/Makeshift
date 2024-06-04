@@ -1,5 +1,4 @@
 #!/usr/bin/env --split-string=${JDK_HOME}/bin/java @Makeshift/java_arguments @Makeshift/java_javac_arguments \c [SS]
-package Makeshift; // [AFN]
 
 // This command runs directly from the present source file, it needs no compiling.
 
@@ -85,4 +84,4 @@ public final class CleanCommand extends SimpleFileVisitor<Path> { // [AFN]
 
 
 
-                                                   // Copyright © 2020, 2022  Michael Allan.  Licence MIT.
+                                            // Copyright © 2020, 2022, 2024  Michael Allan.  Licence MIT.
